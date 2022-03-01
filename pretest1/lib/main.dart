@@ -1,3 +1,4 @@
+import 'package:english_words/english_words.dart'; // Add this line.
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,12 +14,27 @@ class MyApp extends StatelessWidget {
       title: 'Welcome to Flutter',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Welcome to Flutter'),
+          title: Text('Welcome to Flutter'),
         ),
         body: const Center(
-          child: Text('Hello World'),
+          // Add the const
+          //child: Text(wordPair.asPascalCase), // REPLACE with...
+          child: RandomWords(), // ...this line
         ),
       ),
     );
+  }
+}
+
+class RandomWords extends StatefulWidget {
+  @override
+  _RandomWordsState createState() => _RandomWordsState();
+}
+
+class _RandomWordsState extends State<RandomWords> {
+  @override
+  Widget build(BuildContext context) {
+    final wordPair = WordPair.random(); // NEW
+    return Text(wordPair.asPascalCase); // NEW
   }
 }
